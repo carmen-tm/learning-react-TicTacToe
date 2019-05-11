@@ -5,7 +5,7 @@ class Square extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: props.index
+			value: props.newIndex
 		};
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -15,11 +15,11 @@ class Square extends Component {
 		// this.setState({ value: filled });
 		//Callback way
 		this.setState((prevState, props) => ({
-			value: prevState.value === props.index ? filled : props.index
+			value: prevState.value === props.newIndex ? filled : props.newIndex
 		}));
 	}
 	render() {
-		const { name } = this.props;
+		const { name, newIndex } = this.props;
 		const { value } = this.state;
 		return (
 			<button
