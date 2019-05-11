@@ -3,8 +3,15 @@ import styles from './Board.module.scss';
 import Square from './Square';
 
 class Board extends Component {
+	constructor(props) {
+		super(props);
+
+		this.renderSquare = this.renderSquare.bind(this);
+	}
+
+	//Method of the class Board
 	renderSquare(i) {
-		return <Square />;
+		return <Square index={i} name={`Square Number ${i}`} />;
 	}
 
 	render() {
