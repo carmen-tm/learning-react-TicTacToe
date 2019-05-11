@@ -18,17 +18,12 @@ class Board extends Component {
 
 	handleClick(i) {
 		this.setState((prevState, props) => {
-			const arrModif = prevState.squaresArr;
+			//Use slice() method to create a copy of the original array isntead of modifying the existing array (INMUTABILILTY), useful for futuer Time-travel functionality
+			const arrModif = prevState.squaresArr.slice();
 			arrModif[i] = 'x';
 			return { squaresArr: arrModif };
 		});
 	}
-
-	// handleClick(i) {
-	// 	const squares = this.state.squaresArr.slice();
-	// 	squares[i] = 'X';
-	// 	this.setState({ squaresArr: squares });
-	// }
 
 	//Method of the class Board
 	renderSquare(i) {
@@ -40,6 +35,7 @@ class Board extends Component {
 				newIndex={this.state.squaresArr[i]}
 				//Gonna pass a function from mother->childrem to achieve LIFTING (make the childrem by able to change mother's state, and pass new props down)
 				onClick={() => this.handleClick(i)}
+				// onClick={this.handleClick(i)} //No funciona
 			/>
 		);
 	}
