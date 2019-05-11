@@ -13,15 +13,33 @@ class Board extends Component {
 		};
 
 		this.renderSquare = this.renderSquare.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
+
+	handleClick(i) {
+		this.setState((prevState, props) => {
+			const arrModif = prevState.squaresArr;
+			arrModif[i] = 'x';
+			return { squaresArr: arrModif };
+		});
+	}
+
+	// handleClick(i) {
+	// 	const squares = this.state.squaresArr.slice();
+	// 	squares[i] = 'X';
+	// 	this.setState({ squaresArr: squares });
+	// }
 
 	//Method of the class Board
 	renderSquare(i) {
 		return (
 			<Square
-				index={i}
+				//Props that go from mother->childrem:
 				name={`Square Number ${i}`}
+				index={i}
 				newIndex={this.state.squaresArr[i]}
+				//Gonna pass a function from mother->childrem to achieve LIFTING (make the childrem by able to change mother's state, and pass new props down)
+				onClick={() => this.handleClick(i)}
 			/>
 		);
 	}
