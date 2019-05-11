@@ -3,10 +3,10 @@ import styles from './Square.module.scss';
 
 function Square(props) {
 	// console.log(this.props);
-	const { name, newIndex, onClick } = props;
+	const { name, newIndex, onClick, squareClass } = props;
 	return (
 		<button
-			className={styles.square}
+			className={styles.squareX}
 			data-id={name}
 			data-index={newIndex}
 			onClick={onClick}

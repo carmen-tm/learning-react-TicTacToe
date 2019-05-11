@@ -24,7 +24,8 @@ class Board extends Component {
 			return {
 				squaresArr: arrModif,
 				//Always the contrary of what it was previously
-				xIsNext: !prevState.xIsNext
+				xIsNext: !prevState.xIsNext,
+				squareClass: styles.squareX
 			};
 		});
 	}
@@ -57,7 +58,8 @@ class Board extends Component {
 				//Gonna pass a function from mother->childrem to achieve LIFTING (make the childrem by able to change mother's state, and pass new props down)
 				onClick={() => this.handleClick(i)}
 				// onClick={this.handleClick(i)} //No funciona
-				// gameResult={this.calculateWinner()}
+
+				squareClass={this.state.squareClass}
 			/>
 		);
 	}
@@ -77,7 +79,7 @@ class Board extends Component {
 		}
 
 		return (
-			<div>
+			<div className={styles.boardGame}>
 				<h1>The Tic Tac Toe game</h1>
 				<h2 className={styles.status}>{status()}</h2>
 				<div className={styles.boardRow}>

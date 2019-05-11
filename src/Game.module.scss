@@ -1,8 +1,17 @@
+@import 'theme';
+
+body {
+	min-height: 100vh;
+	background-color: $color-primary-500;
+}
+
 .game {
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
 
-.gameInfo {
-	margin-left: 20px;
-}
+// .gameInfo {
+// 	margin-left: 20px;
+// }
