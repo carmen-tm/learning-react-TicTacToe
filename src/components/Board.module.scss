@@ -1,0 +1,10 @@
+.status {
+	margin-bottom: 10px;
+}
+
+.boardRow:after {
+	clear: both;
+	content: '';
+	display: table;
+	color: coral;
+}
