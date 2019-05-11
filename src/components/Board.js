@@ -8,10 +8,9 @@ class Board extends Component {
 		//Create state of mother Bord
 		this.state = {
 			// squaresArr: []
-			squaresArr: Array(9).fill('')
-			// squaresArr: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+			squaresArr: Array(9).fill(''),
+			xIsNext: true
 		};
-
 		this.renderSquare = this.renderSquare.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -20,8 +19,13 @@ class Board extends Component {
 		this.setState((prevState, props) => {
 			//Use slice() method to create a copy of the original array isntead of modifying the existing array (INMUTABILILTY), useful for futuer Time-travel functionality
 			const arrModif = prevState.squaresArr.slice();
-			arrModif[i] = 'x';
-			return { squaresArr: arrModif };
+			//Consult the previous state each time, and depending of the boolean that is inside 'xIsNext', will flip between x and o, and will also invert the boolean
+			arrModif[i] = prevState.xIsNext ? 'x' : 'o';
+			return {
+				squaresArr: arrModif,
+				//Always the contrary of what it was previously
+				xIsNext: !prevState.xIsNext
+			};
 		});
 	}
 
